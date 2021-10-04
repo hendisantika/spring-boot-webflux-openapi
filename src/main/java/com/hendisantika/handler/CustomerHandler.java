@@ -29,4 +29,10 @@ public class CustomerHandler {
         return ServerResponse.ok().body(customerList, Customer.class);
     }
 
+    public Mono<ServerResponse> findCustomer(ServerRequest request) {
+        int customerId = Integer.valueOf(request.pathVariable("input"));
+        // dao.getCustomerList().filter(c->c.getId()==customerId).take(1).single();
+        Mono<Customer> customerMono = customerRepository.getCustomerList().filter(c -> c.getId() == customerId).next();
+        return ServerResponse.ok().body(customerMono, Customer.class);
+    }
 }
