@@ -13,5 +13,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class CustomerRepository {
-
+    private static void sleepExecution(int i) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
