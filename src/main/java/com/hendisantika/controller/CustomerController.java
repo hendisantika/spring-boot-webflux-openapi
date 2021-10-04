@@ -1,9 +1,13 @@
 package com.hendisantika.controller;
 
+import com.hendisantika.dto.Customer;
 import com.hendisantika.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,4 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
+
+    @GetMapping
+    public List<Customer> getAllCustomers() {
+        return customerService.loadAllCustomers();
+    }
 }
